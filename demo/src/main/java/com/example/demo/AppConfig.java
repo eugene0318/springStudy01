@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,7 +9,7 @@ import com.example.demo.discount.FixDiscountPolicy;
 import com.example.demo.discount.RateDiscountPolicy;
 import com.example.demo.member.MemberRepository;
 import com.example.demo.member.MemberService;
-import com.example.demo.member.MemberServiceIImpl;
+import com.example.demo.member.MemberServiceImpl;
 import com.example.demo.member.MemoryMemberRepository;
 import com.example.demo.order.OrderService;
 import com.example.demo.order.OrderServiceImpl;
@@ -16,9 +17,11 @@ import com.example.demo.order.OrderServiceImpl;
 @Configuration
 public class AppConfig {
 	
+	//@Autowired MemberRepository memberRepository;
+	
 	@Bean
 	public MemberService memberService() {
-		return new MemberServiceIImpl(memberRepository());
+		return new MemberServiceImpl(memberRepository());
 
 	}
 	@Bean

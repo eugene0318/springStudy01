@@ -11,7 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import com.example.demo.AppConfig;
 import com.example.demo.member.MemberService;
-import com.example.demo.member.MemberServiceIImpl;
+import com.example.demo.member.MemberServiceImpl;
 
 public class ApplicationContextBasicFindTest {
 
@@ -21,21 +21,21 @@ public class ApplicationContextBasicFindTest {
 	@DisplayName("빈 이름으로 조회")
 	void findBeanByName() {
 		MemberService memberService = ac.getBean("memberService", MemberService.class);
-		Assertions.assertThat(memberService).isInstanceOf(MemberServiceIImpl.class);
+		Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
 	}
 
 	@Test
 	@DisplayName("이름 없이 타입으로만 조회")
 	void findBeanByType() {
 		MemberService memberService = ac.getBean(MemberService.class);
-		assertThat(memberService).isInstanceOf(MemberServiceIImpl.class);
+		assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
 	}
 
 	@Test
 	@DisplayName("구체 타입으로 조회")
 	void findBeanByName2() {
-		MemberServiceIImpl memberService = ac.getBean("memberService", MemberServiceIImpl.class);
-		Assertions.assertThat(memberService).isInstanceOf(MemberServiceIImpl.class);
+		MemberServiceImpl memberService = ac.getBean("memberService", MemberServiceImpl.class);
+		Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
 	}
 
 	@Test
