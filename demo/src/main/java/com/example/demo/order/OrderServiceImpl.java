@@ -1,6 +1,7 @@
 package com.example.demo.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.discount.DiscountPolicy;
@@ -10,7 +11,10 @@ import com.example.demo.member.Member;
 import com.example.demo.member.MemberRepository;
 import com.example.demo.member.MemoryMemberRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Component
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
 	private final MemberRepository memberRepository;
@@ -18,7 +22,7 @@ public class OrderServiceImpl implements OrderService {
 	// private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
 
 	@Autowired
-	public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+	public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("mainDiscountPolicy") DiscountPolicy discountPolicy) {
 		this.memberRepository = memberRepository;
 		this.discountPolicy = discountPolicy;
 	}
